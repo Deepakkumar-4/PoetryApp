@@ -12,11 +12,9 @@ import com.example.quoteapp.APIs.ApiClient;
 import com.example.quoteapp.APIs.ApiInterface;
 import com.example.quoteapp.Adapter.PoetryAdapter;
 import com.example.quoteapp.Model.PoetryModel;
-import com.example.quoteapp.Response.ApiResponse;
+import com.example.quoteapp.Response.GetPoetryResponse;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -36,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        poetryModel.add(new PoetryModel("1","hello world","shade","24-july-2002"));
         initialization();
+//        setAdapter(poetryModel);
         getdata();
 
     }
@@ -58,26 +59,39 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getdata(){
-        apiInterface.getpoetry().enqueue(new Callback<ApiResponse>() {
+
+        Toast.makeText(MainActivity.this, "IN getdata method", Toast.LENGTH_SHORT).show();
+
+        apiInterface.getpoetry().enqueue(new Callback<GetPoetryResponse>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+            public void onResponse(Call<GetPoetryResponse> call, Response<GetPoetryResponse> response) {
+                Toast.makeText(MainActivity.this, "IN onResponse method", Toast.LENGTH_SHORT).show();
 
                 try{
+                    Toast.makeText(MainActivity.this, "IN TRY BLOCK", Toast.LENGTH_SHORT).show();
+
                     if(response != null){
+                        Toast.makeText(MainActivity.this, "RESPONSE NOT NULL", Toast.LENGTH_SHORT).show();
+
                         if (response.body().getStatus().equals("1")){
-                            setAdapter(response.body().getData());
+                            Toast.makeText(MainActivity.this, "Status is 1", Toast.LENGTH_SHORT).show();
+                            setAdapter( response.body().getData());
+
                         }else{
-                            Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "RESPONSE IS NULL", Toast.LENGTH_LONG).show();
                         }
                     }
                 }catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Error while fetching"+e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     Log.e("exp: ", e.getLocalizedMessage());
                 }
 
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
+            public void onFailure(Call<GetPoetryResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Failure", Toast.LENGTH_LONG).show();
+
                 Log.e("failure: ", t.getLocalizedMessage());
             }
         });

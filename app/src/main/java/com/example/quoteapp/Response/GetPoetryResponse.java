@@ -4,12 +4,12 @@ import com.example.quoteapp.Model.PoetryModel;
 
 import java.util.List;
 
-public class ApiResponse {
+public class GetPoetryResponse {
 
     String status,message;
     List<PoetryModel> data;
 
-    public ApiResponse(String status, String message, List<PoetryModel> data) {
+    public GetPoetryResponse(String status, String message, List<PoetryModel> data) {
         this.status = status;
         this.message = message;
         this.data = data;
