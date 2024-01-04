@@ -18,4 +18,13 @@ public interface  ApiInterface {
     @POST("deletepoetry.php")
     Call<DeleteResponse> deletpoetry(@Field("poetry_id") String poetry_id);
 
+    @FormUrlEncoded
+    @POST("addpoetry.php")
+    Call<DeleteResponse> addpoetry(@Field("poetry") String data, @Field("poet_name") String name);
+    @FormUrlEncoded
+    @POST("updatepoetry.php")
+    Call<DeleteResponse> updatepoetry(@Field("poetry") String poetry, @Field("id") String id);
+
+
+
 }

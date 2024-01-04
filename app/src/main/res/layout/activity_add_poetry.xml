@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddPoetry">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_update"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Poetry App" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Poetry"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="10dp"/>
+
+    <EditText
+        android:id="@+id/poetry_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_margin="15dp"
+        android:inputType="text"
+        android:hint="add poetry text"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/edit_text_bg"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Poet Name"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:paddingHorizontal="10dp"/>
+    <EditText
+        android:id="@+id/poetname_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_margin="15dp"
+        android:inputType="text"
+
+        android:hint="add poet name"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/edit_text_bg"/>
+
+    <Button
+        android:id="@+id/update_poetry_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginHorizontal="15dp"/>
+
+
+</LinearLayout>

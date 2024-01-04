@@ -1,6 +1,7 @@
 package com.example.quoteapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.quoteapp.APIs.ApiInterface;
 import com.example.quoteapp.Model.PoetryModel;
 import com.example.quoteapp.R;
 import com.example.quoteapp.Response.DeleteResponse;
+import com.example.quoteapp.UpdateActivity;
 
 import java.util.List;
 
@@ -59,6 +61,15 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.ViewHolder
             }
         });
 
+        holder.updatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("id",poetryModels.get(position).getId());
+                intent.putExtra("poetry",poetryModels.get(position).getPoetryText());
+                context.startActivity(intent);
+            }
+        });
 
 
     }
